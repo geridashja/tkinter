@@ -51,6 +51,8 @@ root = Tk()
 blank_space = " "
 root.title(90*blank_space+"Weather Checker")
 root.geometry("700x350")
+root.iconphoto(False, PhotoImage(file='weather_app\\icons\\weather.png'))
+
 
 city_text = StringVar()
 city_entry = Entry(root, textvariable=city_text)
@@ -70,7 +72,7 @@ Image.pack()
 Temperature = Label(root, text="")
 Temperature.pack()
 
-Weather = Label(root, text='')
+Weather = Label(root, text='', font =("Bold", 11))
 Weather.pack()
 
 root.mainloop()
