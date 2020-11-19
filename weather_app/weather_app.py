@@ -20,7 +20,6 @@ def get_api():
 def make_label(root):
     city = city_text.get()
     weather = get_infos(city)
-    # image = 'weather_app\\icons\\{}.png'.format(weather[4])
     Image = Label(root, bitmap = 'weather_app\\icons\\{}.png'.format(weather[4]) )
     Image.pack()
 
@@ -31,7 +30,6 @@ def search():
     weather = get_infos(city)
     if weather:
         Location["text"] = "{}, {}".format(weather[0], weather[1])
-        #Image['file'] = 'weather_app\\icons\\{}.png'.format(weather[4])
         img["file"] = 'weather_app\\icons\\{}.png'.format(weather[4])
         Temperature["text"] = "{:.2f}°C, {:.2f}°F".format(weather[2], weather[3])
         Weather["text"] = "{}".format(weather[5])
@@ -49,7 +47,6 @@ def get_infos(city):
         temp_far = (temp_kelvin - 273.15) * 9/5 + 32
         country = json["sys"]["country"]
         icon = json["weather"][0]["icon"]
-        #image = PhotoImage(file='icons/{}.png').format(json["weather"][0]["icon"])
         weather = json["weather"][0]["main"]
         final = (city, country, temp_celsius, temp_far, icon, weather)
         return final
@@ -61,13 +58,6 @@ root = Tk()
 blank_space = " "
 root.title(90*blank_space+"Weather Checker")
 root.geometry("700x350")
-
-# kot='01d'
-# image = Image.open('weather_app\\icons\\01d.png')
-# photo_image = ImageTk.PhotoImage(image)
-# label = Label(root, image = photo_image)
-# label.pack()
-
 
 city_text = StringVar()
 city_entry = Entry(root, textvariable=city_text)
@@ -82,10 +72,7 @@ Location.pack(pady=8)
 img = PhotoImage(file= "")
 Image = Label(root, image = img)
 Image.pack()
-# filee = get_icon()
-# print(filee)
-# Image =  PhotoImage(file=filee)
-# make_label(root)
+
 
 Temperature = Label(root, text="")
 Temperature.pack()
