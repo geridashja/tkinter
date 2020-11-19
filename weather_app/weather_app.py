@@ -2,15 +2,16 @@ from tkinter import *
 from tkinter import messagebox
 from configparser import ConfigParser
 import requests
-
-
+import os
 
 url = 'http://api.openweathermap.org/data/2.5/weather?q={}&appid={}'
 
-config_file = "config.ini"
-config = ConfigParser()
-config.read(config_file)
-api_key = config['api_key']['key']
+def get_api():
+    config_file = "weather_app/config.ini"
+    config = ConfigParser()
+    config.read(config_file)
+    api_key = config['api_key']['key']
+    return api_key
 
 
 def search():
@@ -26,7 +27,7 @@ def search():
 
 
 def get_infos(city):
-    result = requests.get(url.format(city, api_key))
+    result = requests.get(url.format(city, get_api()))
     if result:
         json = result.json()
         city = json["name"]
