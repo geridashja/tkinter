@@ -14,8 +14,6 @@ api_key = config['api_key']['key']
 
 
 def search():
-    global image
-
     city = city_text.get()
     weather = get_infos(city)
     if weather:
