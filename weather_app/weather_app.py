@@ -17,13 +17,6 @@ def get_api():
     return api_key
 
 
-def make_label(root):
-    city = city_text.get()
-    weather = get_infos(city)
-    Image = Label(root, bitmap = 'weather_app\\icons\\{}.png'.format(weather[4]) )
-    Image.pack()
-
-
 def search():
     global img
     city = city_text.get()
